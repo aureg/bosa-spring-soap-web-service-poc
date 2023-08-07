@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://fsb.belgium.be/service/nrEntity/messages/get/v1_00"
+           targetNamespace="http://fsb.belgium.be/service/nrEntity/messages/get/v1_00" elementFormDefault="qualified">
+
+    <xs:element name="getNrPersonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="niss" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getNrPersonResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nrPerson" type="tns:nrPerson"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="nrPerson">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string"/>
+            <xs:element name="birthdate" type="xs:date"/>
+            <xs:element name="gender" type="tns:gender"/>
+            <xs:element name="niss" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

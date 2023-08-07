@@ -33,6 +33,11 @@
             <artifactId>wsdl4j</artifactId>
         </dependency>
         <!-- end::springws[] -->
+        <dependency>
+            <groupId>org.apache.ws.xmlschema</groupId>
+            <artifactId>xmlschema-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,6 +75,8 @@
                 <configuration>
                     <sources>
                         <source>${project.basedir}/src/main/resources/countries.xsd</source>
+                        <source>${project.basedir}/src/main/resources/nrperson.xsd</source>
+                        <source>${project.basedir}/src/main/resources/ssrperson.xsd</source>
                     </sources>
                 </configuration>
             </plugin>

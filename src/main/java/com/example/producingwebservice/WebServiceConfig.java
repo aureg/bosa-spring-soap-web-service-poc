@@ -30,12 +30,32 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "countries")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+    public DefaultWsdl11Definition defaultWsdl11DefinitionCountries(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CountriesPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
+        wsdl11Definition.setTargetNamespace(CountryEndpoint.NAMESPACE_URI);
         wsdl11Definition.setSchema(countriesSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean(name = "nrpersonservice")
+    public DefaultWsdl11Definition defaultWsdl11DefinitionNrPerson(XsdSchema nrPersonServiceSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("NrPersonServicePort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace(NrPersonServiceEndpoint.NAMESPACE_URI);
+        wsdl11Definition.setSchema(nrPersonServiceSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean(name = "ssrpersonservice")
+    public DefaultWsdl11Definition defaultWsdl11DefinitionSsrPerson(XsdSchema ssrPersonServiceSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("SsrPersonServicePort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace(SsrPersonServiceEndpoint.NAMESPACE_URI);
+        wsdl11Definition.setSchema(ssrPersonServiceSchema);
         return wsdl11Definition;
     }
 
@@ -62,5 +82,15 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema countriesSchema() {
         return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
+    }
+
+    @Bean
+    public XsdSchema nrPersonServiceSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("nrperson.xsd"));
+    }
+
+    @Bean
+    public XsdSchema ssrPersonServiceSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("ssrperson.xsd"));
     }
 }

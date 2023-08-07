@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://fsb.belgium.be/service/ssrEntity/messages/get/v1_00"
+           targetNamespace="http://fsb.belgium.be/service/ssrEntity/messages/get/v1_00" elementFormDefault="qualified">
+
+    <xs:element name="getSsrPersonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="niss" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getSsrPersonResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ssrPerson" type="tns:ssrPerson"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ssrPerson">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string"/>
+            <xs:element name="address" type="tns:address"/>
+            <xs:element name="niss" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="postalcode" type="xs:integer"/>
+            <xs:element name="number" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
